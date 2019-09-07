@@ -1,0 +1,36 @@
+Revision history for Sub::Quote
+
+2.005001 - 2018-04-20
+  - add a workaround for test failures on early 5.8 releases with threads
+
+2.005000 - 2018-02-06
+  - fixed defer_info and undefer_sub from returning data for a deferred sub
+    after it expires, even if the ref address matches
+  - fixed defer_info not returning info for undeferred unnamed subs after the
+    deferred sub expires
+  - include options in defer_info return data
+  - exclude internals from defer_info return data
+  - document defer_info function
+  - encode all utf8 flagged scalars as strings, since they generally will
+    always have originated as strings.  Avoids future warning on bitwise ops
+    on strings with wide characters.
+  - more thorough check for threads availability to avoid needless test
+    failures.
+  - added file and line options to quote_sub to allow specifying apparent
+    source location.
+  - documented additional options to Sub::Defer::defer_sub and
+    Sub::Quote::quote_sub.
+
+2.004000 - 2017-06-07
+  - more extensive quotify tests
+  - split tests into separate files
+  - propagate package to deferred subs, even if unnamed
+  - reject invalid attributes
+  - include line numbers compile errors (PR#1, djerius)
+
+2.003001 - 2016-12-09
+  - fix use of Sub::Name
+
+2.003000 - 2016-12-09
+  - Sub::Quote and Sub::Defer have been split out of Moo.
+  - For old history see: https://metacpan.org/changes/release/HAARG/Moo-2.002005
